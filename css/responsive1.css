@@ -1,0 +1,208 @@
+/* =========================================
+   RESPONSIVE DESIGN & MOBILE MENU
+   ========================================= */
+
+/* --- MOBILE HEADER BASE (Hidden on Desktop) --- */
+.mobile-header {
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--sidebar-bg);
+    padding: 15px 25px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.mobile-logo {
+    font-family: var(--font-serif);
+    color: var(--gold);
+    font-size: 1.2rem;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.hamburger {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    z-index: 1001;
+}
+
+.hamburger .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-silver);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+/* -----------------------------------------
+   TABLETS & SMALL DESKTOPS (Max: 1024px)
+   ----------------------------------------- */
+@media (max-width: 1024px) {
+    .page {
+        padding: 0 40px;
+    }
+
+    /* Stack cards that are side-by-side */
+    .project-card, 
+    .club-card, 
+    .club-card.reverse-layout {
+        flex-direction: column;
+    }
+
+    .project-evidence {
+        border-left: none;
+        border-top: 1px solid var(--border-color);
+    }
+
+    .club-image-container, 
+    .club-card.reverse-layout .club-image-container {
+        border-right: none;
+        border-left: none;
+        border-bottom: 1px solid var(--border-color);
+        min-height: 250px;
+    }
+
+    .contact-wrapper {
+        flex-direction: column;
+    }
+}
+
+/* -----------------------------------------
+   MOBILE PHONES (Max: 768px)
+   ----------------------------------------- */
+@media (max-width: 768px) {
+    
+    /* --- SHOW MOBILE HEADER --- */
+    .mobile-header {
+        display: flex;
+    }
+
+    /* --- SIDEBAR -> SLIDE-OUT MENU --- */
+    #sidebar {
+        transform: translateX(-100%); /* Hide off-screen to the left */
+        transition: transform 0.3s ease-in-out;
+        z-index: 999;
+        box-shadow: 5px 0 15px rgba(0,0,0,0.5);
+    }
+
+    /* This class is added by JavaScript when the hamburger is clicked */
+    #sidebar.open {
+        transform: translateX(0); /* Slide into view */
+    }
+
+    /* --- MAIN CONTENT ADJUSTMENTS --- */
+    #main-content {
+        margin-left: 0;
+        width: 100%;
+        padding-top: 60px; /* Push content down so mobile header doesn't cover it */
+    }
+
+    .page {
+        padding: 0 25px;
+    }
+
+    .section-title {
+        font-size: 2.2rem;
+        margin: 30px 0 40px 0;
+    }
+
+    /* --- HOME / HERO SECTION --- */
+    .hero-container {
+        flex-direction: column-reverse; /* Put image on top, text below */
+        padding: 20px 25px 40px 25px;
+        text-align: center;
+        gap: 40px;
+    }
+
+    .section-label, .badges-container {
+        justify-content: center;
+    }
+
+    .main-name {
+        font-size: 3.5rem;
+    }
+
+    .hero-image-section {
+        width: 100%;
+    }
+
+    .bio-section {
+        padding: 40px 25px;
+    }
+
+    /* --- STACK ALL GRIDS TO 1 COLUMN --- */
+    .info-grid,
+    .about-grid, 
+    .skills-container, 
+    .certs-container, 
+    .career-container,
+    .future-visits-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .achievement-item {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .achievement-content {
+        border-left: none;
+        padding-left: 0;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        padding-top: 15px;
+    }
+    
+    /* Hamburger Animation to 'X' */
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+        background-color: var(--gold);
+    }
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+        background-color: var(--gold);
+    }
+}
+
+/* -----------------------------------------
+   SMALL PHONES (Max: 480px)
+   ----------------------------------------- */
+@media (max-width: 480px) {
+    .main-name {
+        font-size: 2.8rem;
+    }
+
+    .profile-frame {
+        max-width: 100%;
+    }
+
+    .timeline-item {
+        padding-left: 40px;
+    }
+    
+    .timeline-container::before {
+        left: 10px;
+    }
+    
+    .timeline-marker {
+        left: 1px;
+        width: 16px;
+        height: 16px;
+    }
+
+    .reflection-card {
+        padding: 25px 20px;
+    }
+}

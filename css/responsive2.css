@@ -1,0 +1,176 @@
+/* =========================================
+   RESPONSIVE DESIGN (responsive.css)
+   ========================================= */
+
+/* Hide hamburger button on desktop */
+.hamburger-btn {
+    display: none;
+    position: fixed;
+    top: 15px;
+    left: 20px;
+    z-index: 1001;
+    background-color: var(--sidebar-bg);
+    color: var(--gold);
+    border: 1px solid var(--border-color);
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+/* -----------------------------------------
+   TABLETS & SMALL DESKTOPS (Max Width: 1024px)
+   ----------------------------------------- */
+@media (max-width: 1024px) {
+    .page {
+        padding: 0 40px;
+    }
+
+    /* Stack cards that are too wide */
+    .project-card, 
+    .club-card, 
+    .club-card.reverse-layout, 
+    .contact-wrapper {
+        flex-direction: column;
+    }
+
+    .project-evidence, 
+    .club-image-container, 
+    .club-card.reverse-layout .club-image-container {
+        border-left: none;
+        border-right: none;
+        border-top: 1px solid var(--border-color);
+        border-bottom: 1px solid var(--border-color);
+        min-height: 250px;
+    }
+}
+
+/* -----------------------------------------
+   MOBILE PHONES (Max Width: 768px)
+   ----------------------------------------- */
+@media (max-width: 768px) {
+    
+    /* --- HAMBURGER MENU ACTIVATION --- */
+    .hamburger-btn {
+        display: block; /* Show the button */
+    }
+
+    /* Hide the logo on phones as requested */
+    .sidebar-logo {
+        display: none;
+    }
+
+    /* Transform Sidebar into a sliding drawer */
+    #sidebar {
+        transform: translateX(-100%); /* Hide it off-screen to the left */
+        transition: transform 0.3s ease-in-out;
+        z-index: 1000;
+        box-shadow: 5px 0 15px rgba(0,0,0,0.5);
+        padding-top: 60px; /* Make room for the hamburger button */
+    }
+
+    /* This class will be added by JavaScript when the button is clicked */
+    #sidebar.open {
+        transform: translateX(0); /* Slide it into view */
+    }
+
+    /* --- MAIN CONTENT ADJUSTMENTS --- */
+    #main-content {
+        margin-left: 0; /* Remove the 280px margin */
+        width: 100%;
+    }
+
+    .page {
+        padding: 0 25px;
+    }
+
+    .top-header {
+        padding-top: 60px; /* Push down so it doesn't hide behind hamburger */
+    }
+
+    /* --- HERO SECTION (Home Page) --- */
+    .hero-container {
+        flex-direction: column;
+        padding: 20px 25px 40px 25px;
+        text-align: center;
+        gap: 40px;
+    }
+
+    .section-label {
+        justify-content: center;
+    }
+
+    .main-name {
+        font-size: 3.5rem;
+    }
+
+    .badges-container {
+        justify-content: center;
+    }
+
+    .info-grid {
+        text-align: left; /* Keep info readable */
+    }
+
+    /* --- GRID COLLAPSING --- */
+    /* Force all multi-column grids into a single column */
+    .about-grid, 
+    .skills-container, 
+    .certs-container, 
+    .career-container,
+    .future-visits-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .achievement-item {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .achievement-content {
+        border-left: none;
+        padding-left: 0;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        padding-top: 15px;
+    }
+
+    .bio-section {
+        padding: 40px 25px 60px 25px;
+    }
+}
+
+/* -----------------------------------------
+   SMALL PHONES (Max Width: 480px)
+   ----------------------------------------- */
+@media (max-width: 480px) {
+    .main-name {
+        font-size: 2.8rem;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr; /* Stack student info vertically */
+    }
+
+    .profile-frame {
+        max-width: 100%;
+        border-width: 3px;
+    }
+
+    /* Timeline adjustments for small screens */
+    .timeline-item {
+        padding-left: 40px; 
+    }
+    .timeline-container::before {
+        left: 10px; 
+    }
+    .timeline-marker {
+        left: 1px; 
+        width: 16px;
+        height: 16px;
+    }
+
+    .reflection-card, .contact-message-box {
+        padding: 25px 20px;
+    }
+}
